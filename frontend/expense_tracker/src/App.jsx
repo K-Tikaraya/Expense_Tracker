@@ -19,6 +19,7 @@ const App = () => {
    <div>
     <Router>
       <Routes>
+        console.log("App is running");
         <Route path = "/" element = {<Root />} />
         <Route path = "/login" exact element = {<Login />} />
         <Route path = "/SignUp" exact element = {<SignUp />} />
@@ -43,4 +44,4 @@ const Root = () =>{
   (
   <Navigate to="/login" />
 );
-};
+};  
