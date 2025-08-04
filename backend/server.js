@@ -4,7 +4,8 @@ const Cors = require("cors");
 const path = require("path");
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
-
+const incomeRoutes = require("./routes/incomeRoutes");
+const expenseRoutes = require("./routes/expenseRoutes");
 const app = express();
 
 // Middleware to handle CORS
@@ -21,10 +22,14 @@ app.use(express.json());
 connectDB();
 
 app.use("/api/v1/auth",authRoutes);
-
+app.use("/api/v1/income", incomeRoutes);
+app.use("/api/v1/expense", expenseRoutes);
 
 // serve uploads folder
 app.use("/uploads", express.static(path.join(__dirname,"uploads")));
+
+// Income routes
+// app.use('/api/v1/income', incomeRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>console.log(`server running on port ${PORT}`));
